@@ -2,9 +2,9 @@
 #
 # REMOVE FROM THIS LINE UP TO "EXIT 16"
 # ================================================
-echo -e "You need to edit this file before executing it."
-echo -e "Remove 3 lines at the start of the script (2 echo and 1 exit)"
-exit 16
+#echo -e "You need to edit this file before executing it."
+#echo -e "Remove 3 lines at the start of the script (2 echo and 1 exit)"
+#exit 16
 #
 # =to-from-here===================================
 #
@@ -51,9 +51,9 @@ done
 #timedatectl status
 #
 sed -i 's/^#ParallelDownloads/ParallelDownloads/' /etc/pacman.conf
-###pacman -S --noconfirm reflector rsync
-###reflector -a 48 -c $countryn -f 5 -l 20 --sort rate --save /etc/pacman.d/mirrorlist
-echo "Server = http://192.168.122.207:8080" >  /etc/pacman.d/mirrorlist
+pacman -S --noconfirm reflector rsync
+reflector -a 48 -c $countryn -f 5 -l 20 --sort rate --save /etc/pacman.d/mirrorlist
+#echo "Server = http://192.168.122.207:8080" >  /etc/pacman.d/mirrorlist
 #
 pacman -Sy
 #

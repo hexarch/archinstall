@@ -1,4 +1,6 @@
-# ArchLinux install scripts with XFS or EXT4 filesystem and virtual (QEMU/VBox) or real environments
+# ArchLinux install scripts with XFS filesystem and virtual QEMU or real environments
+### easy to setup scripts for VirtualBox and EXT4
+-----------------------
 ## on console:
 - type passwd and set a root password like 123
 - type "ip -c a" and copy the IPv4

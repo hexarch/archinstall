@@ -2,16 +2,17 @@
 #
 # Logon in the new system, then sudo this commands:
 #
-systemctl enable sshd
-#
 ufw enable
 systemctl enable --now ufw
+systemctl enable --now sshd
+#systemctl enable --now fstrim.timer
+#
 # this ufw commands should be done after system boot
 ufw logging off
 ufw allow ssh
 # block ping
-# sed -i 's/echo-request -j ACCEPT/echo-request -j DROP/' /etc/ufw/before.rules
-# sed -i 's/echo-request -j ACCEPT/echo-request -j DROP/' /etc/ufw/before6.rules
+sed -i 's/echo-request -j ACCEPT/echo-request -j DROP/' /etc/ufw/before.rules
+sed -i 's/echo-request -j ACCEPT/echo-request -j DROP/' /etc/ufw/before6.rules
 #
 echo "alias ls='ls -al --color=auto'" >> .bashrc
 echo "alias l='lsd -al'" >> .bashrc

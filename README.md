@@ -8,7 +8,7 @@
 - type "git clone https://github.com/hexarch/archinstall"
 - type "pacman -Sy"
 - type "pacman -S git vim nano dialog"
-- type "10-QEMU-bios-vda-xfs.sh"
+- type "bash 10-QEMU-bios-vda-xfs.sh"
 - type "bash 20-new-system.sh"
   
 

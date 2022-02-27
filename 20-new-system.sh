@@ -99,7 +99,7 @@ done
 #
 sed -i 's/^#ParallelDownloads/ParallelDownloads/' /etc/pacman.conf
 
-if [ $mirrorsv = '' ]; then
+if [ $mirrorsv -eq '' ]; then
     pacman -S --noconfirm reflector rsync
     reflector -a 48 -c $countryn -f 5 -l 20 --sort rate --save /etc/pacman.d/mirrorlist
 else

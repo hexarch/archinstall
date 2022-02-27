@@ -12,5 +12,5 @@ On a terminal:
 - type "git clone https://github.com/hexarch/archinstall"
 - type "pacman -Sy"
 - type "pacman -S git vim nano dialog"
-
+- pick one script from the 10 or 11 categories, choosing QEMU/VB and XFS/EXT4
 - type "bash 20-new-system.sh"

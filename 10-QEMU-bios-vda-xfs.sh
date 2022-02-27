@@ -50,7 +50,6 @@ partx -u /dev/$harddisk
 mkfs.xfs  /dev/$harddisk'1' -f
 #
 mount /dev/$harddisk'1' /mnt
-cp -R *.sh /mnt
 #
 pacman -Sy
 pacstrap /mnt base vim nano xfsprogs
@@ -58,6 +57,7 @@ genfstab -U /mnt >> /mnt/etc/fstab
 cp /mnt/etc/fstab /mnt/etc/fstab.bak
 #
 cp -R *.sh /mnt
+cp -R packages.txt /mnt
 cp /etc/pacman.d/mirrorlist /mnt/etc/pacman.d/mirrorlist
 #
 echo -e '// NOTE:'

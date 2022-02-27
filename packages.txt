@@ -28,7 +28,6 @@ ethtool
 exfat-utils
 expac
 firewalld
-flatpak
 geany
 git
 go
@@ -37,13 +36,12 @@ gvfs
 gvfs-smb
 haveged
 hdparm
-hplip
 htop
 hunspell-en_us
 inetutils
 iotop
 ipset
-iptables-nft
+iptables
 iw
 iwd
 jfsutils
@@ -79,8 +77,6 @@ pacutils
 plocate
 pulseaudio
 pv
-qemu
-qemu-arch-extra
 reflector
 rsync
 samba
@@ -103,7 +99,6 @@ usbutils
 util-linux
 vde2
 vim
-virt-manager
 wget
 wireless_tools
 wpa_supplicant

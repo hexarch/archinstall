@@ -5,7 +5,7 @@
 # for BIOS + QEMU vda + XFS on an ssh session:
 - type "ssh root@ip-you-got-before" 
 - if it says key error, type "rm .ssh/know_hosts" or edit the file and remove the new IP
-- type "git clone https://github.com/hexarch/archinstall"
+- type "git clone https://github.com/hexarch/archinstall" & cd archinstall
 - type "pacman -Sy"
 - type "pacman -S git vim nano dialog"
 - type "bash 10-QEMU-bios-vda-xfs.sh"

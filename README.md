@@ -11,6 +11,15 @@
 - type "10-QEMU-bios-vda-xfs.sh"
 - type "bash 20-new-system.sh"
   
+
+  .
+  .
+  .
+  .
+  .
+  .
+  .
+  .
   
   
   

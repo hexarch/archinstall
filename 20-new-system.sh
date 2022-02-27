@@ -1,14 +1,19 @@
 #!/bin/bash
 #
+set -o xtrace
+#
+cat /etc/pacman.d/mirrorlist
+pacman -S --noconfirm reflector rsync dialog
+#
 hostname="arch9000"
 username="lino"
-password="password"
+password="123"
 timezone="Europe/Lisbon"
 countryn="Portugal"
 countrys="pt"
 countryb="PT"
 vconsole="pt_latin1"
-harddisk="sda"
+harddisk="vda"
 mirrorsv="http://192.168.122.207:8080"
 #
 dialog  --begin 10 30 \
@@ -57,8 +62,6 @@ mirrorsv=$mirrorsv\n" 15 30
     response=$?
 done
 #
-#set -o xtrace
-#
 noww=$(date '+%d/%m/%Y %H:%M:%S')
 echo "ArchLinux Lin0x scripts choosen settings "$noww  > settings.txt
 echo "System name ="             $hostname >> settings.txt
@@ -83,14 +86,14 @@ echo -e '* This script will install and configure the new system *'
 echo -e ''
 echo -e ''
 #
-x=10
-while [ $x -gt 0 ]
-do
-    sleep 1s
-    #clear
-    echo "$x seconds to start the script"
-    x=$(( $x - 1 ))
-done
+#x=10
+#while [ $x -gt 0 ]
+#do
+#    sleep 1s
+#    #clear
+#    echo "$x seconds to start the script"
+#    x=$(( $x - 1 ))
+#done
 #
 #timedatectl --no-ask-password set-timezone $timezone
 #timedatectl --no-ask-password set-ntp 1
@@ -99,8 +102,7 @@ done
 #
 sed -i 's/^#ParallelDownloads/ParallelDownloads/' /etc/pacman.conf
 
-if [ $mirrorsv -eq '' ]; then
-    pacman -S --noconfirm reflector rsync
+if [ "$mirrorsv" = "" ]; then
     reflector -a 48 -c $countryn -f 5 -l 20 --sort rate --save /etc/pacman.d/mirrorlist
 else
 	echo "Server = http://192.168.122.207:8080" >  /etc/pacman.d/mirrorlist
@@ -115,13 +117,11 @@ pacman --noconfirm --needed -S - < packages.txt
 # optional:
 # pacman --noconfirm --needed -S memtest86+
 #
-systemctl enable NetworkManager
-#
 ln -sf /usr/share/zoneinfo/$timezone /etc/localtime
 hwclock --systohc
 #
 sed -i 's/^#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen
-if [ $countryb -ne 'US' ]; then
+if [ "$countryb" != "US" ]; then
     sed -i 's/^#'$countrys'_'$countryb'.UTF-8 UTF-8/'$countrys'_'$countryb'.UTF-8 UTF-8/' /etc/locale.gen
 fi
 #
@@ -174,6 +174,8 @@ echo '127.0.0.1 '$hostname >> /etc/hosts
 localectl set-locale LANG=$countrys'_'$countryb'.UTF-8'
 # change system language to EN
 localectl set-locale LANG=en_US.UTF-8
+#
+systemctl enable NetworkManager
 #
 sync
 exit 0

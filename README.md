@@ -6,6 +6,7 @@
 - type "ssh root@ip-you-got-before" 
 - if it says key error, type "rm .ssh/know_hosts" or edit the file and remove the new IP
 - type "git clone https://github.com/hexarch/archinstall" & cd archinstall
+- type "echo "Server = http://192.168.122.207:8080" > /etc/pacman.d/mirrorlist" for a custom packages cache
 - type "pacman -Sy"
 - type "pacman -S git vim nano dialog"
 - type "bash 10-QEMU-bios-vda-xfs.sh"

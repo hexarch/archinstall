@@ -20,4 +20,3 @@
 - logon into the new system
 - type "30-final-config.sh"
 - use other script to install XFCE4, GNOME, PLASMA
-  --------------------------

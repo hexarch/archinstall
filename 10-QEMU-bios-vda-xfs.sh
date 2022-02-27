@@ -36,11 +36,11 @@ done
 #
 timedatectl set-ntp true
 sed -i 's/^#ParallelDownloads/ParallelDownloads/' /etc/pacman.conf
-pacman -S --noconfirm reflector rsync
-reflector -a 48 -c $countryn -f 5 -l 20 --sort rate --save /etc/pacman.d/mirrorlist
+pacman -S --noconfirm reflector rsync dialog
+#reflector -a 48 -c $countryn -f 5 -l 20 --sort rate --save /etc/pacman.d/mirrorlist
 #
 # This is for darkhttp server for local packages cache
-# echo "Server = http://192.168.122.207:8080" >  /etc/pacman.d/mirrorlist
+echo "Server = http://192.168.122.207:8080" >  /etc/pacman.d/mirrorlist
 #
 umount /dev/$harddisk'1' -f -l
 dd bs=1M if=/dev/zero of=/dev/$harddisk count=500
@@ -58,6 +58,7 @@ genfstab -U /mnt >> /mnt/etc/fstab
 cp /mnt/etc/fstab /mnt/etc/fstab.bak
 #
 cp -R *.sh /mnt
+cp /etc/pacman.d/mirrorlist /mnt/etc/pacman.d/mirrorlist
 #
 echo -e '// NOTE:'
 echo -e '// If you need to repeat the base install script, you do need to reboot and download'

@@ -1,3 +1,5 @@
+( read-only repo - moved to https://gitlab.com/thinkarch/archinstall )
+
 # ArchLinux install scripts with XFS filesystem and virtual QEMU or real environments
 ### easy to setup scripts for VirtualBox and EXT4
 -----------------------

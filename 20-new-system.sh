@@ -17,7 +17,7 @@ harddisk="vda"
 mirrorsv="http://192.168.122.207:8080"
 #
 dialog  --begin 10 30 \
-        --backtitle "System Information" \
+        --backtitle "System Information - version 0.1-3" \
         --title "About" \
         --msgbox "\n\
 Below are the defaults for the setup.\n\

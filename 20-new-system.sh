@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-set -o xtrace
+#set -o xtrace
 #
 cat /etc/pacman.d/mirrorlist
 pacman -S --noconfirm reflector rsync dialog
@@ -57,7 +57,7 @@ countrys=$countrys\n\
 countryb=$countryb\n\
 vconsole=$vconsole\n\
 harddisk=$harddisk\n\
-mirrorsv=$mirrorsv\n" 15 30
+mirrorsv=$mirrorsv\n"
 #
     response=$?
 done
@@ -105,7 +105,7 @@ sed -i 's/^#ParallelDownloads/ParallelDownloads/' /etc/pacman.conf
 if [ "$mirrorsv" = "" ]; then
     reflector -a 48 -c $countryn -f 5 -l 20 --sort rate --save /etc/pacman.d/mirrorlist
 else
-	echo "Server = http://192.168.122.207:8080" >  /etc/pacman.d/mirrorlist
+	echo "Server = "$mirrorsv >  /etc/pacman.d/mirrorlist
 fi
 #
 # https://wiki.archlinux.org/title/Pacman
@@ -141,11 +141,14 @@ mkinitcpio -p linux 2>/dev/null
 useradd -m -g users -G wheel -s /bin/bash $username
 echo $username':'$password | chpasswd
 echo 'root:'$password | chpasswd
+cp *.sh /home/$username
+cp packages.txt /home/$username
 # add user to libvirt group
 # gpasswd -a $username libvirt
 #
 sed -i 's/^# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/' /etc/sudoers
-echo "GRUB_DISABLE_OS_PROBER=true" >> /etc/default/grub
+#
+#echo "GRUB_DISABLE_OS_PROBER=true" >> /etc/default/grub
 #
 grub-install --target=i386-pc --recheck /dev/$harddisk
 grub-mkconfig -o /boot/grub/grub.cfg "$@"
@@ -154,7 +157,7 @@ cp /etc/default/grub /etc/default/grub.backup
 cp /boot/grub/grub.cfg /boot/grub/grub.cfg.backup
 #
 swapoff -a
-dd if=/dev/zero of=/swapfile bs=1M count=2038 status=progress
+dd if=/dev/zero of=/swapfile bs=1M count=2048 status=progress
 chmod 600 /swapfile
 mkswap /swapfile
 cp /etc/fstab.bak /etc/fstab
@@ -178,6 +181,8 @@ localectl set-locale LANG=en_US.UTF-8
 systemctl enable NetworkManager
 #
 sync
+#
+#
 exit 0
 #
 echo -e "Type umount -a and you may now reboot the machine."

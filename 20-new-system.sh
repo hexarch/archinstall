@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-#set -o xtrace
+set -o xtrace
 #
 cat /etc/pacman.d/mirrorlist
 pacman -S --noconfirm reflector rsync dialog
@@ -57,7 +57,9 @@ countrys=$countrys\n\
 countryb=$countryb\n\
 vconsole=$vconsole\n\
 harddisk=$harddisk\n\
-mirrorsv=$mirrorsv\n"
+mirrorsv=$mirrorsv\n" 15 30
+#                     |  |
+# --------------------/--/ these 2 numbers are the parameter for dialog
 #
     response=$?
 done
